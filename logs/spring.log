@@ -1,0 +1,19 @@
+2020-05-13 23:46:28.000  INFO 51596 --- [restartedMain] com.gaoqc.demo.DemoApplication           : No active profile set, falling back to default profiles: default
+2020-05-13 23:46:28.277  INFO 51596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-05-13 23:46:28.277  INFO 51596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2020-05-13 23:46:28.279  INFO 51596 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2ms. Found 0 Redis repository interfaces.
+2020-05-13 23:46:28.323  INFO 51596 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=b71fdf50-8a01-36cb-9b04-e906652166ba
+2020-05-13 23:46:28.334  INFO 51596 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$38d5506] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-13 23:46:28.335  INFO 51596 --- [restartedMain] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2020-05-13 23:46:28.378  INFO 51596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-05-13 23:46:28.378  INFO 51596 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-13 23:46:28.379  INFO 51596 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020-05-13 23:46:28.390  INFO 51596 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-13 23:46:28.391  INFO 51596 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 388 ms
+2020-05-13 23:46:28.409 DEBUG 51596 --- [restartedMain] com.zaxxer.hikari.HikariConfig           : Driver class com.mysql.jdbc.Driver found in Thread context class loader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@529d29db
+2020-05-13 23:46:28.489  INFO 51596 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-13 23:46:28.543  INFO 51596 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-05-13 23:46:28.559  INFO 51596 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-05-13 23:46:28.561  INFO 51596 --- [restartedMain] com.gaoqc.demo.DemoApplication           : Started DemoApplication in 0.676 seconds (JVM running for 211.711)
+2020-05-13 23:46:28.562  INFO 51596 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2020-05-13 23:46:39.005  INFO 51596 --- [Thread-43] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

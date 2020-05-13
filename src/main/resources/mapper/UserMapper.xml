@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+        <!-- 映射文件，映射到对应的SQL接口 -->
+<mapper namespace="com.gaoqc.demo.mybatis.mapper.UserMapper">
+        <resultMap id="userMap" type="com.gaoqc.demo.model.UserModel">
+                <result column="id" property="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+                <result column="name" property="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+                <result column="sex" property="sex" javaType="java.lang.String" jdbcType="VARCHAR" />
+                <result column="age" property="age" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        </resultMap>
+        <select id="selectById" parameterType="java.lang.Integer" resultMap="userMap">
+            select * from t_user where id=#{id}
+
+        </select>
+        <insert id="insertUser" parameterType="com.gaoqc.demo.model.UserModel">
+                insert t_user(name,age,sex) values(#{name},#{age},#{sex})
+        </insert>
+        <update id="updateUser" parameterType="com.gaoqc.demo.model.UserModel">
+                update t_user t set t.name=#{name},t.age=#{age},t.sex=#{sex} where t.id=#{id}
+        </update>
+        <delete id="delUser" parameterType="java.lang.Integer">
+                delete from t_user t where t.id=#{id}
+        </delete>
+</mapper>
