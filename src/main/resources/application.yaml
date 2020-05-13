@@ -13,3 +13,6 @@ spring:
 logging:
   level:
     root: debug
+app:
+  name: deom
+  id: 50110
