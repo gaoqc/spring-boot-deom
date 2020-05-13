@@ -12,7 +12,8 @@ spring:
     init-size: 5
 logging:
   level:
-    root: debug
+    root: info
+    com.gaoqc.demo: debug
 app:
   name: deom
   id: 50110

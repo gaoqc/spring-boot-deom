@@ -6,9 +6,6 @@ import com.gaoqc.demo.model.UserModel;
 import com.gaoqc.demo.mybatis.mapper.UserMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +24,7 @@ public class UserController {
     @Resource
     AppConfig appConfig;
 
-    private  interface  UserGetView extends UserModel.UserNameAgeView, AppConfig.AppConfigView{};
+    private  interface  UserGetView extends UserModel.UserNameAgeView, AppConfig.AppConfigView{}
     @GetMapping("/{id}")
     @JsonView({UserGetView.class})
     public Object get(@Positive(message = "must be positive") @PathVariable("id")Integer id){
