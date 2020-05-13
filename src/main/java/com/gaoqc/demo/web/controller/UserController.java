@@ -38,7 +38,8 @@ public class UserController {
         Map<String,Object> map=new HashMap<>();
         map.put("user",user);
         map.put("appInfo",appConfig);
-        return map;
+//        return map;
+        throw  new RuntimeException("aaaa");
     }
     @PostMapping("/add")
     public Object addUser(UserModel user){
