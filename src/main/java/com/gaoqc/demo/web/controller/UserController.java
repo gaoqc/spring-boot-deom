@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.gaoqc.demo.config.AppConfig;
 import com.gaoqc.demo.model.UserModel;
 import com.gaoqc.demo.mybatis.mapper.UserMapper;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.annotation.Validated;
@@ -17,8 +19,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 @Validated
+@Slf4j
 public class UserController {
-    Logger logger = LoggerFactory.getLogger(UserController.class);
     @Resource
     UserMapper userMapper;
     @Resource
@@ -29,20 +31,21 @@ public class UserController {
     @JsonView({UserGetView.class})
     public Object get(@Positive(message = "must be positive") @PathVariable("id")Integer id){
 
-        logger.debug("id:{}",id);
+        log.debug("id:{}",id);
         UserModel user= userMapper.selectById(id );
         if(null!=user){
-            logger.info("user:{}",user);
+            log.info("user:{}",user);
         }
 //        Map<String,Object> map=new HashMap<String,Object>();
         Map<String,Object> map=new HashMap<>();
         map.put("user",user);
         map.put("appInfo",appConfig);
-//        return map;
-        throw  new RuntimeException("aaaa");
+        return map;
+//        throw  new RuntimeException("aaaa");
     }
     @PostMapping("/add")
     public Object addUser(UserModel user){
+        float  i= 1/0;
         if(null!=user){
             userMapper.insertUser(user);
         }
@@ -54,9 +57,11 @@ public class UserController {
         return  "success";
     }
     @PutMapping("/update")
+    @JsonView(UserModel.UserView.class)
     public Object updateUSer(UserModel userModel){
         userMapper.updateUser(userModel);
-        return "success";
+
+        return UserModel.builder().age(100).name("gaoqc").sex("F").build();
     }
 
 
