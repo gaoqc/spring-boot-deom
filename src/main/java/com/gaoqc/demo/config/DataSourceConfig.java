@@ -1,5 +1,6 @@
 package com.gaoqc.demo.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,17 +12,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.web.servlet.mvc.method.annotation.PathVariableMapMethodArgumentResolver;
 
 import javax.sql.DataSource;
 
 @Configuration
 @MapperScan(basePackages = "com.gaoqc.demo",sqlSessionFactoryRef = "dataSqlSessionFactory")
+@Slf4j
 public class DataSourceConfig {
     @Bean(name = "dataSrouce")
     @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource  dataSource(){
+    public DataSource  dataSource() {
         return DataSourceBuilder.create().build();
+
+//        return  dataSource;
     }
     @Bean(name = "dataSqlSessionFactory")
     public SqlSessionFactory sqlSessionFactoryl(@Qualifier("dataSrouce") DataSource dataSource) throws Exception {

@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.gaoqc.demo.config.AppConfig;
 import com.gaoqc.demo.model.UserModel;
 import com.gaoqc.demo.mybatis.mapper.UserMapper;
-import lombok.extern.java.Log;
+import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,15 +24,20 @@ public class UserController {
     @Resource
     AppConfig appConfig;
 
+
     private  interface  UserGetView extends UserModel.UserNameAgeView, AppConfig.AppConfigView{}
     @GetMapping("/{id}")
     @JsonView({UserGetView.class})
-    public Object get(@Positive(message = "must be positive") @PathVariable("id")Integer id){
+    public Object get(
+
+            @Positive(message = "must be positive") @PathVariable("id")Integer id,@RequestParam("name")String name){
 
         log.debug("id:{}",id);
         UserModel user= userMapper.selectById(id );
         if(null!=user){
             log.info("user:{}",user);
+        }else if(!Strings.isNullOrEmpty(name)){
+          user=  userMapper.selectByName(name);
         }
 //        Map<String,Object> map=new HashMap<String,Object>();
         Map<String,Object> map=new HashMap<>();
@@ -45,7 +48,6 @@ public class UserController {
     }
     @PostMapping("/add")
     public Object addUser(UserModel user){
-        float  i= 1/0;
         if(null!=user){
             userMapper.insertUser(user);
         }

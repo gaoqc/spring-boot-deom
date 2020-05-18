@@ -5,6 +5,7 @@ spring:
     jdbc-url: jdbc:mysql://127.0.0.1:3306/test
     username: root
     password: gaoqc@123.com
+    type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     max-idle: 10
     max-wait: 10000
