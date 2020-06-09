@@ -25,48 +25,46 @@ public class UserController {
     AppConfig appConfig;
 
 
-    private  interface  UserGetView extends UserModel.UserNameAgeView, AppConfig.AppConfigView{}
+    private interface UserGetView extends UserModel.UserNameAgeView, AppConfig.AppConfigView {
+    }
+
     @GetMapping("/{id}")
     @JsonView({UserGetView.class})
     public Object get(
+            @Positive(message = "must be positive") @PathVariable("id") Integer id) {
 
-            @Positive(message = "must be positive") @PathVariable("id")Integer id,@RequestParam("name")String name){
+        log.debug("id:{}", id);
+        UserModel user = userMapper.selectById(id);
 
-        log.debug("id:{}",id);
-        UserModel user= userMapper.selectById(id );
-        if(null!=user){
-            log.info("user:{}",user);
-        }else if(!Strings.isNullOrEmpty(name)){
-          user=  userMapper.selectByName(name);
-        }
 //        Map<String,Object> map=new HashMap<String,Object>();
-        Map<String,Object> map=new HashMap<>();
-        map.put("user",user);
-        map.put("appInfo",appConfig);
+        Map<String, Object> map = new HashMap<>();
+        map.put("user", user);
+        map.put("appInfo", appConfig);
         return map;
 //        throw  new RuntimeException("aaaa");
     }
+
     @PostMapping("/add")
-    public Object addUser(UserModel user){
-        if(null!=user){
+    public Object addUser(UserModel user) {
+        if (null != user) {
             userMapper.insertUser(user);
         }
         return "SUCCESS";
     }
+
     @DeleteMapping("/{id}")
-    public Object delUser(@PathVariable("id") Integer id){
+    public Object delUser(@PathVariable("id") Integer id) {
         userMapper.delUser(id);
-        return  "success";
+        return "success";
     }
+
     @PutMapping("/update")
     @JsonView(UserModel.UserView.class)
-    public Object updateUSer(UserModel userModel){
+    public Object updateUSer(UserModel userModel) {
         userMapper.updateUser(userModel);
 
         return UserModel.builder().age(100).name("gaoqc").sex("F").build();
     }
-
-
 
 
 }
